@@ -1,1 +1,1 @@
-My versin of snake implemented in python with pygame
+My versin of snake implemented in python with pygame.
