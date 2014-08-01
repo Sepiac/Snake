@@ -17,6 +17,9 @@ class Board:
       for segment in self.segments:
          segment.draw(screen)
       self.food.draw(screen)
+      self.drawScore(screen) 
+      
+   def drawScore(self, screen):
       font = pygame.font.Font(None, 20)
       scoreText = "Score: " + str(self.score)
       text = font.render(scoreText, 1, (0, 0, 0))
