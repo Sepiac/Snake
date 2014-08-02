@@ -26,15 +26,19 @@ class Board:
       screen.blit(text, (0, 0))
 
    def insert(self, segment):
-     self.segments.insert(0, segment) 
-
-   def update(self, screen, direction='right'):
+     self.segments.insert(0, segment)
+     
+   def updateSegments(self):
       survivingSegments = []
       for segment in self.segments:
          segment.update()
          if segment.life > 0:
             survivingSegments.append(segment)
       self.segments = survivingSegments
+
+   def update(self, screen, direction='right'):
+      self.updateSegments()
+
       if(direction == 'right'):
          self.insert(Segment(self.segments[0].x + self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
       elif(direction == 'left'):
