@@ -38,15 +38,7 @@ class Board:
 
    def update(self, screen, direction='right'):
       self.updateSegments()
-
-      if(direction == 'right'):
-         self.insert(Segment(self.segments[0].x + self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
-      elif(direction == 'left'):
-         self.insert(Segment(self.segments[0].x - self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
-      elif(direction == 'up'):
-         self.insert(Segment(self.segments[0].x, self.segments[0].y - self.blockSize+self.padding, self.segmentLife, self.blockSize))
-      elif(direction == 'down'):
-         self.insert(Segment(self.segments[0].x, self.segments[0].y + self.blockSize+self.padding, self.segmentLife, self.blockSize))
+      self.moveSnake(direction)
 
       if (not screen.get_rect().contains(self.segments[0].getRect())) or (self.segments[0].getRect().collidelist(self.segments[1:]) != -1):
          self.stillPlaying = False
@@ -55,6 +47,16 @@ class Board:
          self.increaseLength(5)
          self.score += 1
          self.randomizeFood(screen)
+
+   def moveSnake(self, direction):
+      if(direction == 'right'):
+         self.insert(Segment(self.segments[0].x + self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
+      elif(direction == 'left'):
+         self.insert(Segment(self.segments[0].x - self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
+      elif(direction == 'up'):
+         self.insert(Segment(self.segments[0].x, self.segments[0].y - self.blockSize+self.padding, self.segmentLife, self.blockSize))
+      elif(direction == 'down'):
+         self.insert(Segment(self.segments[0].x, self.segments[0].y + self.blockSize+self.padding, self.segmentLife, self.blockSize))
 
    def collidingWithFood(self):
       return self.segments[0].getRect().colliderect(self.food.getRect())
