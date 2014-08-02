@@ -51,10 +51,13 @@ class Board:
       if (not screen.get_rect().contains(self.segments[0].getRect())) or (self.segments[0].getRect().collidelist(self.segments[1:]) != -1):
          self.stillPlaying = False
 
-      if(self.segments[0].getRect().colliderect(self.food.getRect())):
+      if(self.collidingWithFood()):
          self.increaseLength(5)
          self.score += 1
          self.randomizeFood(screen)
+
+   def collidingWithFood(self):
+      return self.segments[0].getRect().colliderect(self.food.getRect())
 
    def increaseLength(self, length):
       self.segmentLife += length
