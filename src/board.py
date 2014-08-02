@@ -4,13 +4,14 @@ from segment import Segment
 from food import Food
 
 class Board:
-   def __init__(self):
+   def __init__(self, screen):
       self.segments = []
       self.blockSize = 20
       self.segmentLife = 3
       self.stillPlaying = True
       self.padding = 0
       self.food = Food()
+      self.randomizeFood(screen)
       self.score = 0
       self.insert(Segment())
 

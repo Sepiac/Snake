@@ -12,7 +12,7 @@ pygame.display.set_caption('snake')
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-gameBoard = Board()
+gameBoard = Board(screen)
 direction = 'right'
 
 while True:
