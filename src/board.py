@@ -39,10 +39,8 @@ class Board:
    def update(self, screen, direction='right'):
       self.updateSegments()
       self.moveSnake(direction)
-
       if (not screen.get_rect().contains(self.segments[0].getRect())) or (self.segments[0].getRect().collidelist(self.segments[1:]) != -1):
          self.stillPlaying = False
-
       if(self.collidingWithFood()):
          self.increaseLength(5)
          self.score += 1
