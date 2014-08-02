@@ -43,6 +43,7 @@ class Board:
 
       if (not self.snakeIsInsideScreen(screen)) or (self.segments[0].getRect().collidelist(self.segments[1:]) != -1):
          self.stillPlaying = False
+
       if(self.collidingWithFood()):
          self.increaseLength(5)
          self.score += 1
