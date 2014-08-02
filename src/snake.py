@@ -13,7 +13,6 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 gameBoard = Board()
-gameBoard.insert(Segment())
 direction = 'right'
 
 while True:

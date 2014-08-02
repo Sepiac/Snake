@@ -12,6 +12,7 @@ class Board:
       self.padding = 0
       self.food = Food()
       self.score = 0
+      self.insert(Segment())
 
    def draw(self, screen):
       self.drawSegments(screen)
