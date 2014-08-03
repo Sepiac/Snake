@@ -18,10 +18,8 @@ direction = 'right'
 while True:
    screen.fill(WHITE)
 
-   if gameBoard.stillPlaying:
-      gameBoard.update(direction)
 
-   for event in pygame.event.get():
+   for event in [pygame.event.poll()]:
       if event.type == pygame.QUIT:
          sys.exit()
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
@@ -39,6 +37,8 @@ while True:
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
          gameBoard.increaseLength(5)
 
+   if gameBoard.stillPlaying:
+      gameBoard.update(direction)
    gameBoard.draw()
 
    pygame.display.update()
