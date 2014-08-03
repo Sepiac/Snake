@@ -5,30 +5,31 @@ from food import Food
 
 class Board:
    def __init__(self, screen):
+      self.screen = screen
       self.segments = []
       self.blockSize = 20
       self.segmentLife = 3
       self.stillPlaying = True
       self.padding = 0
       self.food = Food()
-      self.randomizeFood(screen)
+      self.randomizeFood()
       self.score = 0
       self.insert(Segment())
 
-   def draw(self, screen):
-      self.drawSegments(screen)
-      self.food.draw(screen)
-      self.drawScore(screen) 
+   def draw(self):
+      self.drawSegments()
+      self.food.draw(self.screen)
+      self.drawScore() 
 
-   def drawSegments(self, screen):
+   def drawSegments(self):
       for segment in self.segments:
-         segment.draw(screen)
+         segment.draw(self.screen)
 
-   def drawScore(self, screen):
+   def drawScore(self):
       font = pygame.font.Font(None, 20)
       scoreText = "Score: " + str(self.score)
       text = font.render(scoreText, 1, (0, 0, 0))
-      screen.blit(text, (0, 0))
+      self.screen.blit(text, (0, 0))
 
    def insert(self, segment):
      self.segments.insert(0, segment)
@@ -41,18 +42,18 @@ class Board:
             survivingSegments.append(segment)
       self.segments = survivingSegments
 
-   def update(self, screen, direction='right'):
+   def update(self, direction='right'):
       self.updateSegments()
 
       self.moveSnake(direction)
 
-      if (not self.snakeIsInsideScreen(screen)) or (self.segments[0].getRect().collidelist(self.segments[1:]) != -1):
+      if (not self.snakeIsInsideScreen(self.screen)) or (self.segments[0].getRect().collidelist(self.segments[1:]) != -1):
          self.stillPlaying = False
 
       if(self.collidingWithFood()):
          self.increaseLength(5)
          self.score += 1
-         self.randomizeFood(screen)
+         self.randomizeFood()
 
    def snakeIsInsideScreen(self, screen):
       return screen.get_rect().contains(self.segments[0].getRect())
@@ -73,6 +74,6 @@ class Board:
    def increaseLength(self, length):
       self.segmentLife += length
 
-   def randomizeFood(self, screen):
-      self.food.getRect().x = random.choice(range(10, screen.get_rect().width-10))
-      self.food.getRect().y = random.choice(range(10, screen.get_rect().height-10))
+   def randomizeFood(self):
+      self.food.getRect().x = random.choice(range(10, self.screen.get_rect().width-10))
+      self.food.getRect().y = random.choice(range(10, self.screen.get_rect().height-10))
