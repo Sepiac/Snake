@@ -11,14 +11,14 @@ class Board:
       self.segmentLife = 3
       self.stillPlaying = True
       self.padding = 0
-      self.food = Food()
+      self.food = Food(self.screen)
       self.randomizeFood()
       self.score = 0
       self.insert(Segment())
 
    def draw(self):
       self.drawSegments()
-      self.food.draw(self.screen)
+      self.food.draw()
       self.drawScore() 
 
    def drawSegments(self):
