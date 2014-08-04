@@ -35,7 +35,8 @@ while True:
          if direction != 'up':
             direction = 'down'
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-         gameBoard.increaseLength(5)
+         gameBoard.__init__(screen)
+         direction = 'right'
 
    if gameBoard.stillPlaying:
       gameBoard.update(direction)
