@@ -15,11 +15,9 @@ BLACK = (0, 0, 0)
 gameBoard = Board(screen)
 direction = 'right'
 
-paused = False
 
 while True:
    screen.fill(WHITE)
-
 
    for event in [pygame.event.poll()]:
       if event.type == pygame.QUIT:
@@ -38,12 +36,12 @@ while True:
             direction = 'down'
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
          if gameBoard.stillPlaying:
-            paused = not paused
+            gameBoard.paused = not gameBoard.paused
          else:
             gameBoard.__init__(screen)
             direction = 'right'
 
-   if gameBoard.stillPlaying and not paused:
+   if gameBoard.stillPlaying and not gameBoard.paused:
       gameBoard.update(direction)
    elif not gameBoard.stillPlaying:
       font = pygame.font.Font(None, 20)

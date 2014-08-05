@@ -15,11 +15,12 @@ class Board:
       self.randomizeFood()
       self.score = 0
       self.insert(Segment())
+      self.paused = False
 
    def draw(self):
       self.drawSegments()
       self.food.draw()
-      self.drawScore() 
+      self.drawScore()
 
    def drawSegments(self):
       for segment in self.segments:
