@@ -40,6 +40,11 @@ while True:
 
    if gameBoard.stillPlaying:
       gameBoard.update(direction)
+   else:
+      font = pygame.font.Font(None, 20)
+      deathMessage = "You have died. Press space to reset"
+      text = font.render(deathMessage, 1, (0, 0, 0))
+      screen.blit(text, (screen.get_rect().centerx - 125, screen.get_rect().centery))
    gameBoard.draw()
 
    pygame.display.update()
