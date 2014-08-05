@@ -15,6 +15,8 @@ BLACK = (0, 0, 0)
 gameBoard = Board(screen)
 direction = 'right'
 
+paused = False
+
 while True:
    screen.fill(WHITE)
 
@@ -35,12 +37,15 @@ while True:
          if direction != 'up':
             direction = 'down'
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
-         gameBoard.__init__(screen)
-         direction = 'right'
+         if gameBoard.stillPlaying:
+            paused = not paused
+         else:
+            gameBoard.__init__(screen)
+            direction = 'right'
 
-   if gameBoard.stillPlaying:
+   if gameBoard.stillPlaying and not paused:
       gameBoard.update(direction)
-   else:
+   elif not gameBoard.stillPlaying:
       font = pygame.font.Font(None, 20)
       deathMessage = "You have died. Press space to reset."
       text = font.render(deathMessage, 1, (0, 0, 0))
