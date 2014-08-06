@@ -48,10 +48,8 @@ class Board:
          self.draw()
       elif not self.stillPlaying:
          self.draw()
-         font = pygame.font.Font(None, 20)
          deathMessage = "You have died. Press space to reset."
-         text = font.render(deathMessage, 1, (0, 0, 0))
-         self.screen.blit(text, (self.screen.get_rect().centerx - 125, self.screen.get_rect().centery))
+         TextRenderer.render(self.screen, deathMessage, self.screen.get_rect().centerx - 125, self.screen.get_rect().centery);
       else:
          self.draw()
 
