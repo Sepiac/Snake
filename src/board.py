@@ -2,6 +2,7 @@ import random
 import pygame
 from segment import Segment
 from food import Food
+from textRenderer import TextRenderer
 
 class Board:
    def __init__(self, screen):
@@ -27,10 +28,8 @@ class Board:
          segment.draw(self.screen)
 
    def drawScore(self):
-      font = pygame.font.Font(None, 20)
       scoreText = "Score: " + str(self.score)
-      text = font.render(scoreText, 1, (0, 0, 0))
-      self.screen.blit(text, (0, 0))
+      TextRenderer.render(self.screen, scoreText);
 
    def insert(self, segment):
      self.segments.insert(0, segment)
