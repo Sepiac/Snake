@@ -11,7 +11,7 @@ class Segment:
       return "x: "+str(self.x)+", y: "+str(self.y)
 
    def draw(self, screen):
-      pygame.draw.rect(screen, (255, 0, 0), self.rect)
+      pygame.draw.rect(screen, (pygame.Color('#BEC97B')), self.rect)
 
    def update(self):
       self.life -= 1

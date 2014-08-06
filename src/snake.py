@@ -17,7 +17,7 @@ direction = 'right'
 
 
 while True:
-   screen.fill(WHITE)
+   screen.fill(pygame.Color('#918da8'))
 
    for event in [pygame.event.poll()]:
       if event.type == pygame.QUIT:
