@@ -44,6 +44,21 @@ class Board:
       self.segments = survivingSegments
 
    def update(self, direction='right'):
+      if self.stillPlaying and not self.paused:
+         self.updateSnake(direction)
+         self.draw()
+      elif not self.stillPlaying:
+         self.draw()
+         font = pygame.font.Font(None, 20)
+         deathMessage = "You have died. Press space to reset."
+         text = font.render(deathMessage, 1, (0, 0, 0))
+         self.screen.blit(text, (self.screen.get_rect().centerx - 125, self.screen.get_rect().centery))
+      else:
+         self.draw()
+
+
+
+   def updateSnake(self, direction='right'):
       self.updateSegments()
 
       self.moveSnake(direction)
