@@ -53,6 +53,8 @@ class Board:
          deathMessage = "You have died. Press space to reset."
          text = font.render(deathMessage, 1, (0, 0, 0))
          self.screen.blit(text, (self.screen.get_rect().centerx - 125, self.screen.get_rect().centery))
+      else:
+         self.draw()
 
 
 
