@@ -11,7 +11,7 @@ class Board:
       self.blockSize = 20
       self.segmentLife = 3
       self.stillPlaying = True
-      self.padding = 0
+      self.padding = 3
       self.food = Food(self.screen)
       self.randomizeFood()
       self.score = 0
@@ -75,9 +75,9 @@ class Board:
       if(direction == 'right'):
          self.insert(Segment(self.segments[0].x + self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
       elif(direction == 'left'):
-         self.insert(Segment(self.segments[0].x - self.blockSize+self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
+         self.insert(Segment(self.segments[0].x - self.blockSize-self.padding, self.segments[0].y, self.segmentLife, self.blockSize))
       elif(direction == 'up'):
-         self.insert(Segment(self.segments[0].x, self.segments[0].y - self.blockSize+self.padding, self.segmentLife, self.blockSize))
+         self.insert(Segment(self.segments[0].x, self.segments[0].y - self.blockSize-self.padding, self.segmentLife, self.blockSize))
       elif(direction == 'down'):
          self.insert(Segment(self.segments[0].x, self.segments[0].y + self.blockSize+self.padding, self.segmentLife, self.blockSize))
 
