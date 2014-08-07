@@ -22,6 +22,8 @@ while True:
    for event in [pygame.event.poll()]:
       if event.type == pygame.QUIT:
          sys.exit()
+      elif event.type == pygame.KEYDOWN and event.key == pygame.K_q:
+         sys.exit()
       elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
          if direction != 'left':
             direction = 'right'
