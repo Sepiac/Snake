@@ -3,5 +3,6 @@
 * Arrow keys: move
 * Space: pause/reset(when dead)
 * q: quit
->####Known Issues:
+>
+####Known Issues:
 *Food can spawn inside of the snake
