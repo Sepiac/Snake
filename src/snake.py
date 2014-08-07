@@ -1,6 +1,7 @@
 import pygame, sys
 from board import Board
 from segment import Segment
+from textRenderer import TextRenderer
 
 pygame.init()
 clock = pygame.time.Clock()
@@ -44,6 +45,7 @@ while True:
             direction = 'right'
 
    gameBoard.update(direction)
+   TextRenderer.render(screen, str(clock.get_fps()), 0, 10)
 
    pygame.display.update()
    clock.tick(10)
