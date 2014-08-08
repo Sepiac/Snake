@@ -4,5 +4,8 @@
 * Space: pause/reset(when dead)
 * q: quit
 
-####Known Issues:
+####Resolved Issues:
 *Food can spawn inside of the snake
+
+####Known Issues:
+*None currently
