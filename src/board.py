@@ -49,7 +49,7 @@ class Board:
       elif not self.stillPlaying:
          self.draw()
          deathMessage = "You have died. Press space to reset or q to quit."
-         TextRenderer.render(self.screen, deathMessage, self.screen.get_rect().centerx - 140, self.screen.get_rect().centery);
+         TextRenderer.render(self.screen, deathMessage, self.screen.get_rect().centerx - TextRenderer.getRenderedWidth(deathMessage)/2, self.screen.get_rect().centery);
       else:
          self.draw()
 
