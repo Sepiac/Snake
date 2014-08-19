@@ -3,6 +3,7 @@ import pygame
 from segment import Segment
 from food import Food
 from textRenderer import TextRenderer
+from message import Message
 
 class Board:
    def __init__(self, screen):
@@ -17,15 +18,21 @@ class Board:
       self.score = 0
       self.insert(Segment())
       self.paused = False
+      self.messages = []
 
    def draw(self):
       self.drawSegments()
       self.food.draw()
       self.drawScore()
+      self.drawMessages()
 
    def drawSegments(self):
       for segment in self.segments:
          segment.draw(self.screen)
+
+   def drawMessages(self):
+      for message in self.messages:
+         message.draw(self.screen)
 
    def drawScore(self):
       scoreText = "Score: " + str(self.score)
