@@ -2,8 +2,8 @@ import random
 import pygame
 from segment import Segment
 from food import Food
-from textRenderer import TextRenderer
 from message import Message
+from textRenderer import TextRenderer
 
 class Board:
    def __init__(self, screen):
@@ -33,10 +33,11 @@ class Board:
    def drawMessages(self):
       for message in self.messages:
          message.draw(self.screen)
+      self.messages = []
 
    def drawScore(self):
       scoreText = "Score: " + str(self.score)
-      TextRenderer.render(self.screen, scoreText);
+      self.messages.append(Message(scoreText))
 
    def insert(self, segment):
      self.segments.insert(0, segment)
@@ -56,7 +57,7 @@ class Board:
       elif not self.stillPlaying:
          self.draw()
          deathMessage = "You have died. Press space to reset or q to quit."
-         TextRenderer.render(self.screen, deathMessage, self.screen.get_rect().centerx - TextRenderer.getRenderedWidth(deathMessage)/2, self.screen.get_rect().centery);
+         self.messages.append(Message(deathMessage, self.screen.get_rect().centerx - TextRenderer.getRenderedWidth(deathMessage)/2, self.screen.get_rect().centery));
       else:
          self.draw()
 
