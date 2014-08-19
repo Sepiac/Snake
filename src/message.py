@@ -7,4 +7,4 @@ class Message:
       self.message = message
 
    def draw(self, screen):
-      TextRenderer.render(screen, message, self.x, self.y)
+      TextRenderer.render(screen, self.message, self.x, self.y)
