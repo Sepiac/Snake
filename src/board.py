@@ -88,8 +88,8 @@ class Board:
       self.segmentLife += length
 
    def randomizeFood(self):
-      self.food.getRect().x = random.choice(range(10, self.screen.get_rect().width-10))
-      self.food.getRect().y = random.choice(range(10, self.screen.get_rect().height-10))
+      self.food.getRect().x = random.choice(range(10, self.screen.get_rect().width-(self.blockSize+self.padding+10)))
+      self.food.getRect().y = random.choice(range(10, self.screen.get_rect().height-(self.blockSize+self.padding+10)))
       if(self.isCollidingWithSnake(self.food)):
          self.randomizeFood()
 
