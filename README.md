@@ -14,6 +14,7 @@
 
 ####Resolved Issues:
 * Food can spawn inside of the snake
+* Food can spawn in an unreachable part of the board
 
 ####Known Issues:
 * None currently
